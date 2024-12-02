@@ -49,3 +49,10 @@ class Database:
         );
         """
         self.execute_query(car_table)
+        customer_table = """
+        CREATE TABLE IF NOT EXISTS customers (
+            customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL
+        );
+        """
+        self.execute_query(customer_table)
