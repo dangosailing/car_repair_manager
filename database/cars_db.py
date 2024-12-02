@@ -18,6 +18,6 @@ class CarsDB:
     
     def delete_by_id(self,car_id:int) -> None:
         query = "DELETE FROM cars WHERE car_id = ?;"
-        self.db.execute_query(query, (car_id))
+        self.db.execute_query(query, (car_id,))
         
         

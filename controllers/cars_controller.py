@@ -32,7 +32,6 @@ class CarsController:
                 self.view.display_message("Invalid Choice. Please try again.")
                 
     def add_car(self) -> None:
-        print("adding car")
         while True:
             try:
                 make = self.view.get_input("Enter car make: ")
