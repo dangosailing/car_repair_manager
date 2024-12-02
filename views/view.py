@@ -18,6 +18,19 @@ class View:
     def get_input(self, prompt:str) -> str:
         return input(prompt)
     
+    def validate_year(self, input_year:str) -> bool:
+        if input_year and input_year.isdigit() and int(input_year) > 1900:
+            return input_year 
+        else:
+            raise ValueError("Error: You need to enter a valid input")
+    
+    def validate_string(self, input_str:str) -> str:
+        if input_str and input_str != "" and input_str != None:
+            return input_str
+        else:
+            raise ValueError("Error: You need to enter a valid input")
+            
+        
     def get_int_input(self, prompt:str) -> int:
         while True:
             try:

@@ -32,9 +32,29 @@ class CarsController:
                 self.view.display_message("Invalid Choice. Please try again.")
                 
     def add_car(self) -> None:
-        make = self.view.get_input("Enter car make: ") 
-        model = self.view.get_input("Enter car model: ") 
-        year = self.view.get_input("Enter car year: ") 
+        print("adding car")
+        while True:
+            try:
+                make = self.view.get_input("Enter car make: ")
+                self.view.validate_string(make)
+                break
+            except ValueError:
+                print("Invalid input. Please enter car make")
+        while True:
+            try:
+                model = self.view.get_input("Enter car model: ")
+                self.view.validate_string(model)
+                break
+            except ValueError:
+                print("Invalid input. Please enter car model: ")
+        while True:
+            try:
+                year = self.view.get_input("Enter car year: ")
+                self.view.validate_year(year)
+                break
+            except ValueError:
+                print("Invalid input. Please enter a year: ")
+        
         car = Car(make,model,year)
         self.cars_db.insert_car(car)
         self.view.display_message("Car added succesfully.")
@@ -47,3 +67,5 @@ class CarsController:
         car_id = self.view.get_int_input("Enter car_id to delete: ")
         self.cars_db.delete_by_id(car_id)
         self.view.display_message("Car deleted sucessfully.")
+        
+    
