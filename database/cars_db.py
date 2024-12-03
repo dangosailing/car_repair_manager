@@ -20,4 +20,18 @@ class CarsDB:
         query = "DELETE FROM cars WHERE car_id = ?;"
         self.db.execute_query(query, (car_id,))
         
+    def search_by_make(self, make:str) -> None:
+        query = "SELECT * FROM cars WHERE make  = ?;"
+        rows = self.db.fetch_all(query, (make,))
+        return [Car(row["make"], row["model"], row["year"], row["car_id"]) for row in rows]
+    
+    def search_by_model(self ,model:str) -> None:
+        query = "SELECT * FROM cars WHERE model = ?;"
+        rows = self.db.fetch_all(query, (model,))
+        return [Car(row["make"], row["model"], row["year"], row["car_id"]) for row in rows]
+    
+    def search_by_year(self,year:int) -> None:
+        query = "SELECT * FROM cars WHERE year = ?;"
+        rows = self.db.fetch_all(query, (year,))
+        return [Car(row["make"], row["model"], row["year"], row["car_id"]) for row in rows]
         

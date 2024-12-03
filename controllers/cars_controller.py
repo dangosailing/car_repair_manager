@@ -16,6 +16,9 @@ class CarsController:
                     "1": "Add Car",
                     "2": "View All Cars",
                     "3": "Delete Car",
+                    "4": "Search by make",
+                    "5": "Search by model",
+                    "6": "Search by year",
                     "0": "Back to Main Menu"
                  }
             )
@@ -26,6 +29,12 @@ class CarsController:
                 self.view_all_cars()
             elif choice == "3":
                 self.delete_car()
+            elif choice == "4":
+                self.search_by_make()
+            elif choice == "5":
+                self.search_by_model()
+            elif choice == "6":
+                self.search_by_year()
             elif choice == "0":
                 break
             else:
@@ -67,4 +76,18 @@ class CarsController:
         self.cars_db.delete_by_id(car_id)
         self.view.display_message("Car deleted sucessfully.")
         
+    def search_by_make(self) -> None:
+        make = self.view.get_input("Enter car make: ")
+        cars = self.cars_db.search_by_make(make)
+        self.view.display_items(cars)
+    
+    def search_by_model(self) -> None:
+        model = self.view.get_input("Enter car model: ")
+        cars = self.cars_db.search_by_model(model)
+        self.view.display_items(cars)
+    
+    def search_by_year(self) -> None:
+        year = self.view.get_int_input("Enter year: ")
+        cars = self.cars_db.search_by_year(year)
+        self.view.display_items(cars)
     

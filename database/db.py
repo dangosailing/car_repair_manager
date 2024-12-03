@@ -56,3 +56,13 @@ class Database:
         );
         """
         self.execute_query(customer_table)
+        repair_table = """
+        CREATE TABLE IF NOT EXISTS repairs (
+            repair_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            customer_id INTEGER,
+            car_id INTEGER,
+            FOREIGN KEY (customer_id) REFERENCES customers(customer_id), 
+            FOREIGN KEY (car_id) REFERENCES cars(car_id) 
+        );
+        """
+        self.execute_query(repair_table)
